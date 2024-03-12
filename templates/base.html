@@ -1,0 +1,27 @@
+<!DOCTYPE html5>
+<html lang = "ru">
+    <head>
+        {% block title %}
+        {% endblock %}        
+        <meta charset="utf-8">        
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">        
+    </head>
+    <body>
+        <header>
+            <div>
+                <div class="header_home">
+                    <a href="/"><b>ГЛАВНАЯ</b></a>
+                </div>
+                <div class="header_other">
+                    <a href="/movies">Быстрая загрузка</a>
+                </div>
+                <!-- <div class="header_other">
+                    <a href="/serials">Сериал</a>
+                </div> -->
+           </div> 
+        </header>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

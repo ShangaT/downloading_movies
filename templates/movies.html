@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+<!DOCTYPE html5>
+<html lang = "ru">
+    <head>
+        {% block title %}
+        <title>Скачивай по ссылке</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+       <div class="form">
+        <form action="" method="post">
+            <input type="url" placeholder = "Вставьте сюда ссылку" name = "search_bar" required/>
+            <button type="submit">></button>
+        </form>
+       </div> 
+
+        {% if message != '' %}
+            <div class="form">
+                <p> {{ message['name'] }} </p>
+            </div>
+            
+            {% if message['type'] == 'movie' %}
+                <div class="form">             
+                    <p>Нажмите, чтобы <b><a href="{{ message['collection'] }}">СКАЧАТЬ</a></b> фильм</p>
+                </div>
+            {% endif %}
+
+            {% if message['type'] == 'serial' %}
+                <div class="form">
+                    {% for key, value in message['collection'].items() %} 
+                        <div class="episodes">
+                            <li><b>{{ key }}</b></li> <br>
+                            {% for i, j in value.items() %}
+                                <li><a href="{{ j }}"> {{ i }} </a></li>  
+                            {% endfor %}
+                        </div>                    
+                    {% endfor %}
+                </div>                
+            {% endif %}
+        {% endif %}
+
+        {% endblock %}            
+    </body>
